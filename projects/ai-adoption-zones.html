@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Adoption Zones — Stefan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="case.css" />
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a class="nav-brand" href="../index.html">Stefan</a>
+      <ul class="nav-links">
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../about.html">About me</a></li>
+      </ul>
+    </nav>
+
+    <article class="wrap">
+      <a class="back" href="../projects.html">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        All projects
+      </a>
+
+      <div class="meta-row">
+        <span class="num">01</span>
+        <span class="company">Miro · 2025</span>
+        <span class="role">Lead Researcher · AI Adoption Strategy</span>
+      </div>
+
+      <h1>AI Adoption Zones</h1>
+      <p class="headline">5 zones — one shared taxonomy</p>
+      <p class="summary">A five-zone adoption framework (AI Zone 1–5) scoring individuals and orgs, validated against survey and behavioral data, with population sizing kept deliberately separate from profiling.</p>
+
+      <div class="cover-visual">
+        <figure class="figure wide">
+          <img src="images/ai-adoption-zones-cover.jpg" alt="AI Adoption Zones cover" />
+        </figure>
+      </div>
+
+
+      <section class="section">
+        <h2>Situation</h2>
+          <p>When AI features started shipping at pace, the organization still lacked a shared language for who was ready to adopt. Product talked about power users. Sales talked about skeptical enterprises. Research talked about personas that never quite matched either. Everyone was pointing at the same product and describing different people.</p>
+          <p>Usage data made the gap worse, not better. Event tables could tell you what someone clicked yesterday. They could not tell you whether the person was capable but blocked by their company, or sitting in a ready organization without the skills to take advantage of it. Roadmaps and GTM kept optimizing for informal labels that meant different things in every room.</p>
+      </section>
+
+      <section class="section">
+        <h2>Task</h2>
+          <p>My job was to create a durable adoption framework — something psychometric enough to defend, practical enough for product to use, and honest enough to separate &quot;who answered our survey&quot; from &quot;how many people like this exist in the product.&quot; That meant scoring individuals and organizations, mapping them into actionable zones, validating those zones against both survey and behavioral data, and estimating population size without pretending the sample was the market.</p>
+      </section>
+
+      <section class="section">
+        <h2>Approach</h2>
+          <p>I adapted a Work Trend Index–style construct — Individual Capability crossed with Organizational Readiness — into a five-zone model (AI Zone 1–5) tailored to our context. Respondents’ Likert answers became equal-weight composite scores, with absolute cutoffs and a mid band so we were not forcing every ambiguous person into a dramatic corner.</p>
+          <p>From there the work became a full research system. Survey respondents were tagged into zones, then enriched with firmographics and AI behavior from Snowflake so we could profile over- and under-indexing by plan, role, and industry. Validation was deliberate rather than decorative: FDR-corrected chi-square tests, Spearman correlations, logistic regression, and random forest models trained on non-circular features, with cross-validated accuracy reported plainly. Population sizing used post-stratification on plan × AI-user cells — survey zone rates scaled by MAU composition — so profiling and sizing stayed methodologically separate. The outputs were packaged like a product: framework docs, stakeholder HTML, Miro board kits, zone rosters, and significance summaries people could reuse without me in the room.</p>
+      <div class="inline-visual">
+        <figure class="figure wide">
+          <img src="images/ai-adoption-zones-visual-1.svg" alt="AI Adoption Zones visual" />
+        </figure>
+      </div>
+
+      </section>
+
+      <section class="section">
+        <h2>Result</h2>
+          <p>The strategic impact was immediate and transformative. Research, Product, and GTM unified around a single, shared taxonomy for AI strategy. The quantitative validation proved bulletproof under executive scrutiny: a substantial majority of primary-zone hypotheses retained significance after FDR correction, cross-validated accuracy hit target thresholds across classes, and discrimination between high-performing and stalled segments remained exceptionally strong — surfacing formal AI training as one of the strongest predictive constructs of adoption.</p>
+          <p>Beyond the numbers, the project reshaped our organization’s data culture. We established a strict distinction between sample concentration (overindexation) and population scale (post-stratification), elevating how executive teams discuss survey insights and ensuring the framework remains an enduring cornerstone of product strategy.</p>
+      <div class="inline-visual">
+        <figure class="figure wide">
+          <img src="images/ai-adoption-zones-visual-2.svg" alt="AI Adoption Zones visual" />
+        </figure>
+      </div>
+
+      </section>
+
+      <section class="section">
+        <h2>Methodology</h2>
+          <p>This case is the cleanest proof of construct validity and survey psychometrics in the portfolio: dual-axis composites, Likert encoding, cutoff design, and an explicit mid band. It also shows causal humility with proper statistics — FDR control, effect sizes, odds ratios, and cross-validation framed as association and predictive validity, not proof that zone membership &quot;causes&quot; outcomes. Behavioral and attitudinal data were fused on purpose. Insights were productized for stakeholders. And research-systems thinking showed up in the decision to keep sizing and profiling as separate playbooks.</p>
+      </section>
+
+      <p class="skills"><strong>Skills demonstrated:</strong> Construct validity &amp; psychometrics, Segmentation (LCA, clustering), Regression &amp; effect sizes, Survey design</p>
+
+      <nav class="pager">
+        <span class="disabled">← Previous</span>
+        <a href="always-on-signals.html">Always-on Signals →</a>
+      </nav>
+
+      <p class="footer">© 2026 Stefan · Portfolio study</p>
+    </article>
+  </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 360" width="820" height="360" role="img">
+  <rect width="820" height="360" fill="#faf9fc" rx="16"/>
+  
+  <text x="48" y="44" font-family="Syne, Manrope, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#4262ff">SIGNALS</text>
+  <text x="48" y="78" font-family="Syne, Manrope, sans-serif" font-size="24" font-weight="800" fill="#1a1a1a">Standing health</text>
+  
+  <circle cx="130" cy="200" r="62" fill="none" stroke="rgba(26,26,26,0.10)" stroke-width="18"/>
+  <circle cx="130" cy="200" r="62" fill="none" stroke="#2dd4bf" stroke-width="18"
+    stroke-linecap="round" stroke-dasharray="280.5 109.1"
+    transform="rotate(-90 130 200)"/>
+  <text x="130" y="196" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="22" font-weight="800" fill="#1a1a1a">72%</text>
+  <text x="130" y="302" text-anchor="middle" font-family="Manrope, sans-serif" font-size="14" font-weight="600" fill="#5c5c5c">CSAT</text>
+  <circle cx="310" cy="200" r="62" fill="none" stroke="rgba(26,26,26,0.10)" stroke-width="18"/>
+  <circle cx="310" cy="200" r="62" fill="none" stroke="#a78bfa" stroke-width="18"
+    stroke-linecap="round" stroke-dasharray="159.7 229.8"
+    transform="rotate(-90 310 200)"/>
+  <text x="310" y="196" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="22" font-weight="800" fill="#1a1a1a">41%</text>
+  <text x="310" y="302" text-anchor="middle" font-family="Manrope, sans-serif" font-size="14" font-weight="600" fill="#5c5c5c">PMF</text>
+  <circle cx="490" cy="200" r="62" fill="none" stroke="rgba(26,26,26,0.10)" stroke-width="18"/>
+  <circle cx="490" cy="200" r="62" fill="none" stroke="#4262ff" stroke-width="18"
+    stroke-linecap="round" stroke-dasharray="109.1 280.5"
+    transform="rotate(-90 490 200)"/>
+  <text x="490" y="196" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="22" font-weight="800" fill="#1a1a1a">28%</text>
+  <text x="490" y="302" text-anchor="middle" font-family="Manrope, sans-serif" font-size="14" font-weight="600" fill="#5c5c5c">NPS</text>
+  <circle cx="670" cy="200" r="62" fill="none" stroke="rgba(26,26,26,0.10)" stroke-width="18"/>
+  <circle cx="670" cy="200" r="62" fill="none" stroke="#f59e0b" stroke-width="18"
+    stroke-linecap="round" stroke-dasharray="245.4 144.1"
+    transform="rotate(-90 670 200)"/>
+  <text x="670" y="196" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="22" font-weight="800" fill="#1a1a1a">63%</text>
+  <text x="670" y="302" text-anchor="middle" font-family="Manrope, sans-serif" font-size="14" font-weight="600" fill="#5c5c5c">Effort</text>
+
+</svg>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Segmentation with LCA — Stefan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="case.css" />
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a class="nav-brand" href="../index.html">Stefan</a>
+      <ul class="nav-links">
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../about.html">About me</a></li>
+      </ul>
+    </nav>
+
+    <article class="wrap">
+      <a class="back" href="../projects.html">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        All projects
+      </a>
+
+      <div class="meta-row">
+        <span class="num">04</span>
+        <span class="company">Miro · 2025</span>
+        <span class="role">Research Lead · Audience Segmentation</span>
+      </div>
+
+      <h1>Segmentation with LCA</h1>
+      <p class="headline">5-class solution chosen over 3–9 options</p>
+      <p class="summary">Latent class analysis across up to 155k CSAT responses, landing on seven interpretable audience classes and compared head-to-head against simpler attitudinal quadrants.</p>
+
+      <div class="cover-visual">
+        <figure class="figure wide">
+          <img src="images/segmentation-lca-cover.svg" alt="Segmentation with LCA cover" />
+        </figure>
+      </div>
+
+
+      <section class="section">
+        <h2>Situation</h2>
+          <p>Intercept survey volume was a gift and a trap. Across rating tips, feature feedback, and ad-hoc evaluations, we were analyzing hundreds of thousands — sometimes over a million — responses. A single average score looked definitive while hiding almost everything that mattered. Demographic cuts and simple attitudinal quadrants each explained a slice of reality, but we still lacked a clear, nuanced understanding of our audiences beyond simple extremes (highly engaged vs. disengaged, happy vs. unhappy). Because the product is complex and versatile, used across diverse roles where segments frequently intersect and overlap, traditional single-metric splits were insufficient. Latent Class Analysis was selected to unify multiple data streams — attitudinal signals, firmographic data, and behavioral usage — into comprehensive, actionable audience profiles.</p>
+      </section>
+
+      <section class="section">
+        <h2>Task</h2>
+          <p>Discover latent audience classes from large intercept survey datasets, profile those classes until they were actionable, prove the separation was real, and evaluate LCA alongside simpler quadrant models so stakeholders could choose the right tool for their needs.</p>
+      </section>
+
+      <section class="section">
+        <h2>Approach</h2>
+          <p>Latent class analysis ran across broad intercept survey collections, analyzing tens to hundreds of thousands of responses. Model selection evaluated solutions ranging from 3 to 9 classes using information criteria (AIC/BIC) to assess parsimony and entropy to ensure classification clarity, alongside qualitative interpretability. A 5-class solution was ultimately selected as the best balance of statistical robustness and actionable insight, with each class profiled on score distribution, enterprise mix, functional composition, activity intensity, region, and qualitative comment themes until the profiles were concrete enough for product and design teams to act on.</p>
+          <p>Validation used ANOVA to measure effect sizes alongside chi-square tests on key covariates like tenure, user role, and usage intensity. In parallel, a multi-pillar audience model combined attitudinal, firmographic, and behavioral signals, with trade-offs explicitly documented: where LCA and quadrants aligned, where they diverged, and when each method was most appropriate.</p>
+      <div class="inline-visual">
+        <figure class="figure wide">
+          <img src="images/segmentation-lca-visual-1.svg" alt="Segmentation with LCA visual" />
+        </figure>
+      </div>
+
+      </section>
+
+      <section class="section">
+        <h2>Result</h2>
+          <p>Relying solely on overall average satisfaction scores stopped being the standard. Well-defined segment profiles gave teams concrete user archetypes to design for and target, and statistical validation confirmed robust class separation across datasets. The lasting impact was strategic: LCA became the primary discovery tool across product lines, while simplified quadrant frameworks served as the ongoing operational model — reducing tool confusion and streamlining research workflows.</p>
+      <div class="inline-visual">
+        <figure class="figure wide">
+          <img src="images/segmentation-lca-visual-2.svg" alt="Segmentation with LCA visual" />
+        </figure>
+      </div>
+
+      </section>
+
+      <section class="section">
+        <h2>Methodology</h2>
+          <p>This project demonstrates advanced segmentation methodology and psychometrics-adjacent modeling: model selection, class profiling, and rigorous dataset analysis across solutions ranging from 3 to 9 classes, using information criteria and entropy alongside qualitative interpretability. Statistical validation focused on meaningful effect sizes and covariate relationships, while methodological evaluation highlighted key trade-offs between segmentation approaches — synthesizing behavioral and attitudinal signals while maintaining causal rigor.</p>
+      </section>
+
+      <p class="skills"><strong>Skills demonstrated:</strong> Construct validity &amp; psychometrics, Segmentation (LCA, clustering), Regression &amp; effect sizes, Survey design</p>
+
+      <nav class="pager">
+        <a href="new-audiences.html">← New Audiences</a>
+        <a href="ai-canvas-non-adopters.html">AI Canvas Non-Adopter Profiling →</a>
+      </nav>
+
+      <p class="footer">© 2026 Stefan · Portfolio study</p>
+    </article>
+  </div>
+</body>
+</html>

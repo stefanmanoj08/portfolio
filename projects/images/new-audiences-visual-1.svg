@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 360" width="840" height="360" role="img">
+  <rect width="840" height="360" fill="#faf9fc" rx="16"/>
+  
+  <text x="40" y="40" font-family="Syne, Manrope, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#4262ff">PROFILES</text>
+  <text x="40" y="72" font-family="Syne, Manrope, sans-serif" font-size="22" font-weight="800" fill="#1a1a1a">Monetization spectrum</text>
+  
+  <circle cx="130" cy="175" r="42" fill="#b45309" fill-opacity="0.92"/>
+  <text x="130" y="180" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="15" font-weight="700" fill="#fff">P4</text>
+  <text x="130" y="245" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="600" fill="#1a1a1a">Heavy listeners</text>
+  <circle cx="300" cy="165" r="52" fill="#a78bfa" fill-opacity="0.92"/>
+  <text x="300" y="170" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="15" font-weight="700" fill="#fff">P3</text>
+  <text x="300" y="245" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="600" fill="#1a1a1a">Super techy</text>
+  <circle cx="500" cy="155" r="70" fill="#2dd4bf" fill-opacity="0.92"/>
+  <text x="500" y="160" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="15" font-weight="700" fill="#fff">P2</text>
+  <text x="500" y="253" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="600" fill="#1a1a1a">Super curious</text>
+  <circle cx="700" cy="165" r="58" fill="#f472b6" fill-opacity="0.92"/>
+  <text x="700" y="170" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="15" font-weight="700" fill="#fff">P1</text>
+  <text x="700" y="251" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="600" fill="#1a1a1a">Super social</text>
+  <line x1="60" y1="300" x2="780" y2="300" stroke="rgba(26,26,26,0.10)" stroke-width="2"/>
+  <polygon points="780,300 768,294 768,306" fill="#5c5c5c"/>
+  <text x="420" y="332" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" fill="#5c5c5c">monetization potential →</text>
+
+</svg>

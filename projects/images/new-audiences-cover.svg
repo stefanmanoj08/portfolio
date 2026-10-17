@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 420" width="820" height="420" role="img">
+  <rect width="820" height="420" fill="#faf9fc" rx="16"/>
+  
+  <text x="48" y="48" font-family="Syne, Manrope, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#4262ff">AUDIENCES</text>
+  <text x="48" y="86" font-family="Syne, Manrope, sans-serif" font-size="28" font-weight="800" fill="#1a1a1a">Three priority profiles</text>
+  <circle cx="170" cy="230" r="70" fill="#f472b6" fill-opacity="0.92"/>
+  <text x="170" y="224" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="14" font-weight="700" fill="#fff">Profile 1</text>
+  <text x="170" y="246" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" fill="#fff" opacity="0.9">Super social</text>
+  <circle cx="400" cy="215" r="88" fill="#2dd4bf" fill-opacity="0.92"/>
+  <text x="400" y="208" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="15" font-weight="700" fill="#fff">Profile 2</text>
+  <text x="400" y="232" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" fill="#fff" opacity="0.9">Super curious</text>
+  <circle cx="640" cy="235" r="62" fill="#a78bfa" fill-opacity="0.95"/>
+  <text x="640" y="228" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="14" font-weight="700" fill="#fff">Profile 3</text>
+  <text x="640" y="250" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" fill="#fff" opacity="0.9">Super techy</text>
+  <line x1="70" y1="360" x2="740" y2="360" stroke="rgba(26,26,26,0.10)" stroke-width="2"/>
+  <polygon points="740,360 728,354 728,366" fill="#5c5c5c"/>
+  <text x="405" y="392" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" fill="#5c5c5c">monetization potential →</text>
+
+</svg>

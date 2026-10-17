@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" role="img">
+  <rect width="900" height="480" fill="#faf9fc" rx="16"/>
+  
+  <text x="48" y="48" font-family="Syne, Manrope, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#4262ff">SIGNAL</text>
+  <text x="48" y="84" font-family="Syne, Manrope, sans-serif" font-size="28" font-weight="800" fill="#1a1a1a">Monthly performance</text>
+  <line x1="60" y1="140" x2="860" y2="140" stroke="rgba(26,26,26,0.10)"/>
+  <line x1="60" y1="220" x2="860" y2="220" stroke="rgba(26,26,26,0.10)"/>
+  <line x1="60" y1="300" x2="860" y2="300" stroke="rgba(26,26,26,0.10)"/>
+  <line x1="60" y1="380" x2="860" y2="380" stroke="rgba(26,26,26,0.10)"/>
+  <path d="M80 360 C180 340, 260 300, 340 250 S500 160, 580 140 S740 100, 840 80" fill="none" stroke="#2dd4bf" stroke-width="4" stroke-linecap="round"/>
+  <path d="M80 360 C180 340, 260 300, 340 250 S500 160, 580 140 S740 100, 840 80 L840 400 L80 400 Z" fill="#2dd4bf" fill-opacity="0.12"/>
+  <path d="M80 340 C200 320, 300 280, 400 260 S600 220, 720 200 S800 180, 840 170" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round"/>
+  <path d="M80 350 C200 310, 320 270, 420 250 S580 210, 700 180 S800 150, 840 140" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="840" cy="80" r="7" fill="#2dd4bf"/>
+  <g font-family="Manrope, sans-serif" font-size="13" fill="#5c5c5c">
+    <circle cx="60" cy="440" r="5" fill="#2dd4bf"/><text x="72" y="444">CSAT</text>
+    <circle cx="160" cy="440" r="5" fill="#a78bfa"/><text x="172" y="444">PMF</text>
+    <circle cx="250" cy="440" r="5" fill="#f59e0b"/><text x="262" y="444">Baseline</text>
+  </g>
+
+</svg>

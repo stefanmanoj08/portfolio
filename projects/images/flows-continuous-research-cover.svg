@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400" role="img">
+  <rect width="900" height="400" fill="#faf9fc" rx="16"/>
+  
+  <text x="48" y="56" font-family="Syne, Manrope, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#4262ff">LOOP</text>
+  <text x="48" y="96" font-family="Syne, Manrope, sans-serif" font-size="30" font-weight="800" fill="#1a1a1a">Continuous research</text>
+  <g font-family="Syne, Manrope, sans-serif" font-weight="700" font-size="14">
+    <rect x="80" y="180" width="140" height="70" rx="14" fill="#ffffff" stroke="#a78bfa" stroke-width="2"/>
+    <text x="150" y="222" text-anchor="middle" fill="#1a1a1a">Prototype</text>
+    <path d="M230 215 H280" stroke="#4262ff" stroke-width="2"/>
+    <rect x="290" y="180" width="140" height="70" rx="14" fill="#ffffff" stroke="#4262ff" stroke-width="2"/>
+    <text x="360" y="222" text-anchor="middle" fill="#1a1a1a">Test</text>
+    <path d="M440 215 H490" stroke="#2dd4bf" stroke-width="2"/>
+    <rect x="500" y="180" width="140" height="70" rx="14" fill="#ffffff" stroke="#2dd4bf" stroke-width="2"/>
+    <text x="570" y="222" text-anchor="middle" fill="#1a1a1a">Validate</text>
+    <path d="M650 215 H700" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="710" y="180" width="140" height="70" rx="14" fill="#4262ff"/>
+    <text x="780" y="222" text-anchor="middle" fill="#fff">Ship</text>
+  </g>
+  <path d="M780 260 C780 320, 150 320, 150 250" fill="none" stroke="#a78bfa" stroke-width="2" stroke-dasharray="6 6"/>
+  <text x="465" y="350" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" fill="#5c5c5c">Evidence-gated backlog rhythm</text>
+
+</svg>

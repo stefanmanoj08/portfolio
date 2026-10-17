@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 360" width="820" height="360" role="img">
+  <rect width="820" height="360" fill="#faf9fc" rx="16"/>
+  
+  <text x="48" y="48" font-family="Syne, Manrope, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#4262ff">FINDING</text>
+  <text x="48" y="84" font-family="Syne, Manrope, sans-serif" font-size="24" font-weight="800" fill="#1a1a1a">What drives conversion</text>
+  <rect x="48" y="130" width="220" height="160" rx="16" fill="#ffffff" stroke="rgba(26,26,26,0.10)"/>
+  <text x="158" y="190" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="18" font-weight="700" fill="#4262ff">Baseline</text>
+  <text x="158" y="220" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" fill="#5c5c5c">Primary hook</text>
+  <rect x="300" y="130" width="220" height="160" rx="16" fill="#ffffff" stroke="rgba(26,26,26,0.10)"/>
+  <text x="410" y="190" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="18" font-weight="700" fill="#a78bfa">Premium AI</text>
+  <text x="410" y="220" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" fill="#5c5c5c">Secondary enhancer</text>
+  <rect x="552" y="130" width="220" height="160" rx="16" fill="#4262ff"/>
+  <text x="662" y="190" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="18" font-weight="700" fill="#fff">Clear story</text>
+  <text x="662" y="220" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" fill="#fff" opacity="0.8">Visual-first packaging</text>
+
+</svg>

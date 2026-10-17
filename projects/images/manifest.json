@@ -1,0 +1,149 @@
+[
+  {
+    "num": "1",
+    "slug": "ai-adoption-zones",
+    "title": "AI Adoption Zones",
+    "files": [
+      {
+        "file": "ai-adoption-zones-cover.jpg",
+        "alt": "AI Adoption Zones cover",
+        "bytes": 41104
+      },
+      {
+        "file": "ai-adoption-zones-visual-1.png",
+        "alt": "AI Adoption Zones visual",
+        "bytes": 45693
+      },
+      {
+        "file": "ai-adoption-zones-visual-2.png",
+        "alt": "AI Adoption Zones visual",
+        "bytes": 48113
+      }
+    ]
+  },
+  {
+    "num": "2",
+    "slug": "always-on-signals",
+    "title": "Always-on Signals",
+    "files": [
+      {
+        "file": "always-on-signals-cover.svg",
+        "alt": "Always-on Signals cover",
+        "bytes": 2940
+      },
+      {
+        "file": "always-on-signals-visual-1.png",
+        "alt": "Always-on Signals visual",
+        "bytes": 31531
+      },
+      {
+        "file": "always-on-signals-visual-2.png",
+        "alt": "Always-on Signals visual",
+        "bytes": 20810
+      }
+    ]
+  },
+  {
+    "num": "3",
+    "slug": "new-audiences",
+    "title": "New Audiences",
+    "files": [
+      {
+        "file": "new-audiences-cover.jpg",
+        "alt": "New Audiences cover",
+        "bytes": 23207
+      },
+      {
+        "file": "new-audiences-visual-1.png",
+        "alt": "New Audiences visual",
+        "bytes": 23834
+      },
+      {
+        "file": "new-audiences-visual-2.jpg",
+        "alt": "New Audiences visual",
+        "bytes": 91792
+      }
+    ]
+  },
+  {
+    "num": "4",
+    "slug": "segmentation-lca",
+    "title": "Segmentation with LCA",
+    "files": [
+      {
+        "file": "segmentation-lca-cover.jpg",
+        "alt": "Segmentation with LCA cover",
+        "bytes": 44555
+      },
+      {
+        "file": "segmentation-lca-visual-1.png",
+        "alt": "Segmentation with LCA visual",
+        "bytes": 26089
+      },
+      {
+        "file": "segmentation-lca-visual-2.png",
+        "alt": "Segmentation with LCA visual",
+        "bytes": 30007
+      }
+    ]
+  },
+  {
+    "num": "5",
+    "slug": "ai-canvas-non-adopters",
+    "title": "AI Canvas Non-Adopter Profiling & Research",
+    "files": [
+      {
+        "file": "ai-canvas-non-adopters-cover.png",
+        "alt": "AI Canvas Non-Adopter Profiling & Research visual",
+        "bytes": 30724
+      }
+    ]
+  },
+  {
+    "num": "6",
+    "slug": "data-stories",
+    "title": "Data Stories",
+    "files": [
+      {
+        "file": "data-stories-cover.jpg",
+        "alt": "Data Stories cover",
+        "bytes": 88088
+      }
+    ]
+  },
+  {
+    "num": "7",
+    "slug": "purchase-intent-bundles",
+    "title": "Purchase Intent for AI Workspace Bundles",
+    "files": [
+      {
+        "file": "purchase-intent-bundles-cover.png",
+        "alt": "Purchase Intent for AI Workspace Bundles visual",
+        "bytes": 42915
+      },
+      {
+        "file": "purchase-intent-bundles-visual-1.png",
+        "alt": "Purchase Intent for AI Workspace Bundles visual",
+        "bytes": 19510
+      }
+    ]
+  },
+  {
+    "num": "8",
+    "slug": "flows-continuous-research",
+    "title": "Flows: Continuous Research",
+    "files": [
+      {
+        "file": "flows-continuous-research-cover.jpg",
+        "alt": "Flows: Continuous Research cover",
+        "bytes": 36841
+      }
+    ]
+  },
+  {
+    "num": "9",
+    "slug": "post-canvas-rollout",
+    "title": "Post-Canvas Rollout Research",
+    "files": []
+  }
+]

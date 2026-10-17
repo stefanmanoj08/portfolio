@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Stefan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1a;
+      --muted: #5c5c5c;
+      --blue: #4262ff;
+      --lilac: #a78bfa;
+      --paper: #faf9fc;
+      --spot-bg: #f3f0fc;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page { min-height: 100vh; background: var(--paper); }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 28px 0;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 5;
+      flex-shrink: 0;
+    }
+
+    .nav-brand {
+      font-family: "Syne", sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    .page-intro {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 8px 28px 20px;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .back:hover { color: var(--ink); }
+    .back svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .kicker {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    .page-intro h1 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      margin-bottom: 8px;
+    }
+
+    .page-intro .lead {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.55;
+    }
+
+    /* ── ManyChat-style pinned spotlight — all 9 ── */
+    .spotlight {
+      position: relative;
+      height: 920vh;
+    }
+
+    .spotlight-pin {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background:
+        linear-gradient(90deg, var(--spot-bg) 0%, var(--spot-bg) 48%, #ebe6f8 100%);
+      overflow: hidden;
+    }
+
+    .spotlight-pin::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 0 48%;
+      background-image:
+        linear-gradient(rgba(26, 26, 26, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 26, 26, 0.05) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+
+    .spotlight-inner {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      min-height: 0;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 28px 8px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .spot-scroll-cue {
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 28px 22px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(26, 26, 26, 0.42);
+      animation: cue-bounce 2.2s ease-in-out infinite;
+    }
+    .spot-scroll-cue svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+    @keyframes cue-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+
+    .spot-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+      max-width: 420px;
+    }
+
+    .spot-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+
+    .spot-step {
+      appearance: none;
+      border: 0;
+      height: 4px;
+      width: 22px;
+      border-radius: 999px;
+      background: rgba(26, 26, 26, 0.16);
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.35s ease, width 0.35s ease;
+    }
+    .spot-step.is-active {
+      background: var(--ink);
+      width: 36px;
+    }
+    .spot-step.is-done {
+      background: rgba(26, 26, 26, 0.45);
+    }
+
+    .copy-stack {
+      position: relative;
+      min-height: 260px;
+    }
+
+    .copy-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateY(14px);
+      pointer-events: none;
+      transition:
+        opacity 0.45s ease,
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .copy-slide.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      position: relative;
+    }
+
+    .copy-slide .num {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    .copy-slide h2 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(26px, 3.4vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+      margin-bottom: 16px;
+      max-width: 14ch;
+    }
+
+    .copy-slide p {
+      font-size: 16px;
+      color: var(--ink);
+      opacity: 0.78;
+      line-height: 1.55;
+      margin-bottom: 28px;
+      max-width: 36ch;
+    }
+
+    .copy-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 999px;
+      width: fit-content;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .copy-cta:hover {
+      background: #2a2a2a;
+      transform: translateY(-1px);
+    }
+    .copy-cta svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .spot-visual {
+      position: relative;
+      height: min(460px, calc(100dvh - 160px));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visual-stack {
+      position: relative;
+      width: min(320px, 100%);
+      height: 100%;
+      max-height: 460px;
+    }
+
+    .visual-slide {
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #faf9fc;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 24px 50px rgba(26, 26, 26, 0.1);
+      opacity: 0;
+      transform: translateX(48px) scale(0.96);
+      pointer-events: none;
+      transition:
+        opacity 0.5s ease,
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .visual-slide.is-active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      pointer-events: auto;
+      z-index: 2;
+    }
+    .visual-slide.is-exit {
+      opacity: 0;
+      transform: translateX(-36px) scale(0.96);
+      z-index: 1;
+    }
+
+    .visual-slide img,
+    .visual-fallback {
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      background: #faf9fc;
+    }
+
+    .visual-fallback {
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse 70% 50% at 30% 20%, rgba(167,139,250,0.35), transparent 55%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(66,98,255,0.2), transparent 50%),
+        #1c1a24;
+      color: rgba(255,255,255,0.55);
+      font-family: "Syne", sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .visual-cap {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--lilac);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .visual-cap span:last-child {
+      opacity: 0.85;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .after {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 28px 80px;
+    }
+
+    .footer {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .spotlight-inner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 24px 20px 28px;
+        align-content: center;
+      }
+      .spot-copy { max-width: none; }
+      .copy-stack { min-height: 240px; }
+      .spot-visual {
+        height: min(360px, 40vh);
+        order: -1;
+      }
+      .visual-stack { width: min(260px, 78vw); }
+      .spotlight-pin::before { inset: 0; opacity: 0.5; }
+      .spot-step { width: 16px; }
+      .spot-step.is-active { width: 28px; }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .copy-slide,
+      .visual-slide { transition: none; }
+      .spot-scroll-cue { animation: none; }
+      .spotlight { height: auto; }
+      .spotlight-pin { position: relative; height: auto; }
+      .copy-slide {
+        position: relative;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        margin-bottom: 40px;
+      }
+      .visual-slide {
+        position: relative;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        margin-bottom: 24px;
+        height: 360px;
+      }
+      .copy-stack, .visual-stack { min-height: 0; height: auto; }
+      .spotlight-inner {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="spotlight" aria-label="Case studies" data-spotlight>
+      <div class="spotlight-pin">
+        <nav class="nav">
+          <a class="nav-brand" href="index.html">Stefan</a>
+          <ul class="nav-links">
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About me</a></li>
+          </ul>
+        </nav>
+
+        <div class="spotlight-inner">
+          <div class="spot-copy">
+            <div class="spot-steps" role="tablist" aria-label="Case steps">
+              <button type="button" class="spot-step is-active" data-step="0" aria-label="Case 1"></button>
+              <button type="button" class="spot-step" data-step="1" aria-label="Case 2"></button>
+              <button type="button" class="spot-step" data-step="2" aria-label="Case 3"></button>
+              <button type="button" class="spot-step" data-step="3" aria-label="Case 4"></button>
+              <button type="button" class="spot-step" data-step="4" aria-label="Case 5"></button>
+              <button type="button" class="spot-step" data-step="5" aria-label="Case 6"></button>
+              <button type="button" class="spot-step" data-step="6" aria-label="Case 7"></button>
+              <button type="button" class="spot-step" data-step="7" aria-label="Case 8"></button>
+              <button type="button" class="spot-step" data-step="8" aria-label="Case 9"></button>
+            </div>
+
+            <div class="copy-stack">
+              <div class="copy-slide is-active" data-copy="0">
+                <p class="num">01 · Miro · 2025</p>
+                <h2>AI Adoption Zones</h2>
+                <p>5 zones — one shared taxonomy. A five-zone adoption framework scoring individuals and orgs, validated against survey and behavioral data.</p>
+                <a class="copy-cta" href="projects/ai-adoption-zones.html">Read case <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+              <div class="copy-slide" data-copy="1">
+                <p class="num">02 · Miro · 2025</p>
+                <h2>Always-on Signals</h2>
+                <p>Hundreds of thousands of CSAT &amp; PMF responses. A standing measurement system that replaced company dashboards across product lines.</p>
+                <a class="copy-cta" href="projects/always-on-signals.html">Read case <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+              <div class="copy-slide" data-copy="2">
+                <p class="num">03 · Spotify · 2023</p>
+                <h2>New Audiences</h2>
+                <p>3 priority audience profiles. Behavioral clustering plus a mindset survey, then diary and interview work turned into designable archetypes.</p>
+                <a class="copy-cta" href="projects/new-audiences.html">Read case <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+              <div class="copy-slide" data-copy="3">
+                <p class="num">04 · Miro · 2025</p>
+                <h2>Segmentation with LCA</h2>
+                <p>5-class solution chosen over 3–9 options. Latent class analysis across large CSAT sets, compared head-to-head with simpler quadrants.</p>
+                <a class="copy-cta" href="projects/segmentation-lca.html">Read case <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+              <div class="copy-slide" data-copy="4">
+                <p class="num">05 · Miro · 2025</p>
+                <h2>AI Canvas Non-Adopter Profiling</h2>
+                <p>Hundreds of thousands reached, most never adopted. Behavioral funnel plus interviews that named the fixable reasons people stayed on the sidelines.</p>
+                <a class="copy-cta" href="projects/ai-canvas-non-adopters.html">Read case <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+              <div class="copy-slide" data-copy="5">
+                <p class="num">06 · Spotify · 2023</p>
+                <h2>Data Stories</h2>
+                <p>12 interviews reshaped the roadmap. Concept tests with real listening data reframed a paid bet away from competing with a free annual recap.</p>
+                <a class="copy-cta" href="projects/data-stories.html">Read case <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+              <div class="copy-slide" data-copy="6">
+                <p class="num">07 · Miro · 2025</p>
+                <h2>Purchase Intent for AI Workspace Bundles</h2>
+                <p>Core plan = the hook, AI = the enhancer. A purchase-intent study that reframed bundle messaging for product, PMM, and design.</p>
+                <a class="copy-cta" href="projects/purchase-intent-bundles.html">Read case <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+              <div class="copy-slide" data-copy="7">
+                <p class="num">08 · Miro · 2025</p>
+                <h2>Flows: Continuous Research</h2>
+                <p>One of the most loved features in the portfolio. A weekly research rhythm that shifted development from speculation to validated decisions.</p>
+                <a class="copy-cta" href="projects/flows-continuous-research.html">Read case <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+              <div class="copy-slide" data-copy="8">
+                <p class="num">09 · Miro · 2025</p>
+                <h2>Post-Canvas Rollout Research</h2>
+                <p>Mixed-methods study that turned scattered post-rollout complaints into a ranked, fixable list — led by conversation memory.</p>
+                <a class="copy-cta" href="projects/post-canvas-rollout.html">Read case <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="spot-visual">
+            <div class="visual-stack">
+              <div class="visual-slide is-active" data-visual="0">
+                <img src="projects/images/card-ai-adoption-zones.svg" alt="AI Adoption Zones" />
+                <div class="visual-cap"><span>Shared taxonomy for AI strategy</span><span>1 / 9</span></div>
+              </div>
+              <div class="visual-slide" data-visual="1">
+                <img src="projects/images/card-always-on-signals.svg" alt="Always-on Signals" />
+                <div class="visual-cap"><span>Standing CSAT × PMF system</span><span>2 / 9</span></div>
+              </div>
+              <div class="visual-slide" data-visual="2">
+                <img src="projects/images/card-new-audiences.svg" alt="New Audiences" />
+                <div class="visual-cap"><span>Audience architecture at bet scale</span><span>3 / 9</span></div>
+              </div>
+              <div class="visual-slide" data-visual="3">
+                <img src="projects/images/card-segmentation-lca.svg" alt="Segmentation with LCA" />
+                <div class="visual-cap"><span>Latent classes over averages</span><span>4 / 9</span></div>
+              </div>
+              <div class="visual-slide" data-visual="4">
+                <img src="projects/images/card-ai-canvas-non-adopters.svg" alt="AI Canvas Non-Adopter Profiling" />
+                <div class="visual-cap"><span>Why access never became adoption</span><span>5 / 9</span></div>
+              </div>
+              <div class="visual-slide" data-visual="5">
+                <img src="projects/images/card-data-stories.svg" alt="Data Stories" />
+                <div class="visual-cap"><span>Desirability before the build</span><span>6 / 9</span></div>
+              </div>
+              <div class="visual-slide" data-visual="6">
+                <img src="projects/images/card-purchase-intent-bundles.svg" alt="Purchase Intent for AI Workspace Bundles" />
+                <div class="visual-cap"><span>Core hook, AI enhancer</span><span>7 / 9</span></div>
+              </div>
+              <div class="visual-slide" data-visual="7">
+                <img src="projects/images/card-flows-continuous-research.svg" alt="Flows: Continuous Research" />
+                <div class="visual-cap"><span>Weekly evidence-gated shipping</span><span>8 / 9</span></div>
+              </div>
+              <div class="visual-slide" data-visual="8">
+                <img src="projects/images/card-post-canvas-rollout.svg" alt="Post-Canvas Rollout Research" />
+                <div class="visual-cap"><span>Ranked blockers after launch</span><span>9 / 9</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="spot-scroll-cue" aria-hidden="true">
+          Scroll to check all nine cases
+          <svg viewBox="0 0 24 24"><path d="M6 10l6 6 6-6"/></svg>
+        </p>
+      </div>
+    </section>
+
+    <div class="after">
+      <p class="footer">© 2026 Stefan · Portfolio study</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const section = document.querySelector("[data-spotlight]");
+      if (!section) return;
+
+      const steps = Array.from(section.querySelectorAll(".spot-step"));
+      const copies = Array.from(section.querySelectorAll(".copy-slide"));
+      const visuals = Array.from(section.querySelectorAll(".visual-slide"));
+      const total = steps.length;
+      let current = 0;
+      let prev = 0;
+
+      const setStep = (index) => {
+        index = Math.max(0, Math.min(total - 1, index));
+        prev = current;
+        current = index;
+
+        steps.forEach((el, i) => {
+          el.classList.toggle("is-active", i === current);
+          el.classList.toggle("is-done", i < current);
+        });
+
+        copies.forEach((el, i) => {
+          el.classList.toggle("is-active", i === current);
+        });
+
+        visuals.forEach((el, i) => {
+          el.classList.remove("is-active", "is-exit");
+          if (i === current) el.classList.add("is-active");
+          else if (i === prev && prev !== current) el.classList.add("is-exit");
+        });
+      };
+
+      const updateFromScroll = () => {
+        const rect = section.getBoundingClientRect();
+        const scrollable = section.offsetHeight - window.innerHeight;
+        if (scrollable <= 0) {
+          setStep(0);
+          return;
+        }
+        const progressed = Math.min(scrollable, Math.max(0, -rect.top));
+        const p = progressed / scrollable;
+        const index = Math.min(total - 1, Math.floor(p * total + 0.001));
+        setStep(index);
+      };
+
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          updateFromScroll();
+          ticking = false;
+        });
+      };
+
+      steps.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const i = Number(btn.dataset.step);
+          const rect = section.getBoundingClientRect();
+          const top = window.scrollY + rect.top;
+          const scrollable = section.offsetHeight - window.innerHeight;
+          const target = top + (scrollable * (i + 0.5)) / total;
+          window.scrollTo({ top: target, behavior: "smooth" });
+        });
+      });
+
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll, { passive: true });
+        updateFromScroll();
+      } else {
+        setStep(0);
+      }
+    })();
+  </script>
+</body>
+</html>

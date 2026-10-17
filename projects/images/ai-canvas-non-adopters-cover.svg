@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img">
+  <rect width="720" height="360" fill="#faf9fc" rx="16"/>
+  
+  <text x="48" y="44" font-family="Syne, Manrope, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em" fill="#4262ff">FUNNEL</text>
+  <text x="48" y="80" font-family="Syne, Manrope, sans-serif" font-size="24" font-weight="800" fill="#1a1a1a">AI activity cohorts</text>
+  <path d="M 280.0 100.0 A 110 110 0 1 1 173.5 237.4 L 214.1 226.9 A 68 68 0 1 0 280.0 142.0 Z" fill="#a78bfa"/><path d="M 173.5 237.4 A 110 110 0 0 1 191.0 145.3 L 225.0 170.0 A 68 68 0 0 0 214.1 226.9 Z" fill="#2dd4bf"/><path d="M 191.0 145.3 A 110 110 0 0 1 252.6 103.5 L 263.1 144.1 A 68 68 0 0 0 225.0 170.0 Z" fill="#f59e0b"/><path d="M 252.6 103.5 A 110 110 0 0 1 280.0 100.0 L 280.0 142.0 A 68 68 0 0 0 263.1 144.1 Z" fill="#f472b6"/>
+  <text x="280" y="216" text-anchor="middle" font-family="Syne, Manrope, sans-serif" font-size="18" font-weight="800" fill="#1a1a1a">AI</text>
+  <circle cx="480" cy="150" r="7" fill="#a78bfa"/><text x="500" y="155" font-family="Manrope, sans-serif" font-size="15" fill="#1a1a1a">One-time</text><circle cx="480" cy="192" r="7" fill="#2dd4bf"/><text x="500" y="197" font-family="Manrope, sans-serif" font-size="15" fill="#1a1a1a">Weekly</text><circle cx="480" cy="234" r="7" fill="#f59e0b"/><text x="500" y="239" font-family="Manrope, sans-serif" font-size="15" fill="#1a1a1a">Monthly</text><circle cx="480" cy="276" r="7" fill="#f472b6"/><text x="500" y="281" font-family="Manrope, sans-serif" font-size="15" fill="#1a1a1a">Daily</text>
+
+</svg>

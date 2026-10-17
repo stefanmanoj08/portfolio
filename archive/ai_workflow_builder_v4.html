@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stefan — Product & Analytics (v4)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1a;
+      --muted: #5c5c5c;
+      --blue: #4262ff;
+      --lilac: #a78bfa;
+      --lilac-line: #b9a6ff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background: #e9e9ed;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Fullscreen snap panels ── */
+    .panel {
+      min-height: 100vh;
+      min-height: 100dvh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    /* ── Miro website canvas ── */
+    .viewport {
+      position: relative;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      background: #e9e9ed;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    .dots {
+      position: absolute;
+      inset: -8%;
+      background-image: radial-gradient(#b0b0b8 1.15px, transparent 1.15px);
+      background-size: 18px 18px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .bloom {
+      position: absolute;
+      width: 50vw;
+      height: 50vw;
+      right: 6%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: radial-gradient(circle, rgba(167,139,250,0.42) 0%, rgba(66,98,255,0.1) 42%, transparent 68%);
+      filter: blur(6px);
+      pointer-events: none;
+      animation: bloom 7s ease-in-out infinite;
+    }
+
+    @keyframes bloom {
+      0%, 100% { opacity: 0.75; transform: translateY(-50%) scale(1); }
+      50% { opacity: 1; transform: translateY(-50%) scale(1.05); }
+    }
+
+    .nav {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 30;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 28px;
+    }
+
+    .nav-brand {
+      font-family: "Syne", sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* Framework layout: graph | card */
+    .flow {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      padding: 88px 4% 48px;
+      gap: 8px;
+      z-index: 5;
+    }
+
+    .graph {
+      position: relative;
+      flex: 1;
+      height: min(440px, 58vh);
+      min-width: 0;
+    }
+
+    .col-label {
+      position: absolute;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.3);
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .wires {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    /* Clean connectors — draw in cascade */
+    .wire {
+      fill: none;
+      stroke: var(--lilac-line);
+      stroke-width: 2.25;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      opacity: 0.95;
+      animation: draw-wire 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .wire-soft {
+      fill: none;
+      stroke: #ddd6fe;
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      opacity: 0.45;
+      animation: draw-wire 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    /* Stage 1: domains → approach */
+    .w-s1 { animation-delay: 0.35s; }
+    /* Stage 2: approach → project grid */
+    .w-s2 { animation-delay: 1.1s; }
+    /* Stage 3: projects → output */
+    .w-s3 { animation-delay: 1.95s; }
+
+    @keyframes draw-wire {
+      from { stroke-dashoffset: 1; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* Subtle pulse that travels after a line has drawn */
+    .wire-flow {
+      fill: none;
+      stroke: #ede9fe;
+      stroke-width: 2.25;
+      stroke-linecap: round;
+      stroke-dasharray: 10 40;
+      opacity: 0;
+      animation: flow-run 1.4s linear infinite;
+    }
+    .wire-flow.f1 { animation-delay: 1.15s; }
+    .wire-flow.f2 { animation-delay: 1.9s; }
+    .wire-flow.f3 { animation-delay: 2.7s; }
+
+    @keyframes flow-run {
+      0% { opacity: 0; stroke-dashoffset: 0; }
+      10% { opacity: 0.85; }
+      100% { opacity: 0; stroke-dashoffset: -50; }
+    }
+
+    /* Black pills + lilac glow + icons */
+    .node {
+      position: absolute;
+      width: 96px;
+      height: 44px;
+      border-radius: 999px;
+      background: #111;
+      border: 1.5px solid rgba(196, 181, 253, 0.9);
+      box-shadow:
+        0 0 0 5px rgba(196, 181, 253, 0.18),
+        0 0 24px rgba(167, 139, 250, 0.45),
+        0 10px 24px rgba(0,0,0,0.1);
+      cursor: pointer;
+      z-index: 6;
+      display: grid;
+      place-items: center;
+      color: #c4b5fd;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+      opacity: 0;
+      animation: node-in 0.5s ease forwards, pulse 3.8s ease-in-out infinite;
+    }
+
+    .node svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      pointer-events: none;
+    }
+
+    .node.approach {
+      width: 104px;
+      height: 48px;
+    }
+
+    .node.approach svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .node:hover {
+      color: #ede9fe;
+      transform: scale(1.07);
+      box-shadow:
+        0 0 0 7px rgba(196, 181, 253, 0.28),
+        0 0 36px rgba(167, 139, 250, 0.65),
+        0 12px 28px rgba(0,0,0,0.12);
+    }
+
+    @keyframes node-in {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow:
+          0 0 0 5px rgba(196, 181, 253, 0.16),
+          0 0 20px rgba(167, 139, 250, 0.38),
+          0 10px 24px rgba(0,0,0,0.1);
+      }
+      50% {
+        box-shadow:
+          0 0 0 7px rgba(196, 181, 253, 0.26),
+          0 0 32px rgba(167, 139, 250, 0.58),
+          0 10px 24px rgba(0,0,0,0.1);
+      }
+    }
+
+    /* Nodes appear with the cascade */
+    .n-domain { animation-delay: 0.12s, 0.12s; }
+    .n-approach { animation-delay: 0.95s, 0.95s; }
+    .n-project { animation-delay: 1.7s, 1.7s; }
+
+    /* Generate-a-Flow card (Miro site) */
+    .card {
+      position: relative;
+      flex-shrink: 0;
+      width: min(360px, 34vw);
+      background: #fff;
+      border: 2px solid var(--blue);
+      border-radius: 6px;
+      padding: 26px 24px 22px;
+      z-index: 15;
+      transform: rotate(-1.2deg);
+      box-shadow:
+        0 24px 60px rgba(80, 60, 160, 0.14),
+        0 0 80px rgba(167, 139, 250, 0.22);
+      opacity: 0;
+      animation: card-in 0.7s 2.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes card-in {
+      from { opacity: 0; transform: translateX(20px) rotate(-1.2deg); }
+      to { opacity: 1; transform: translateX(0) rotate(-1.2deg); }
+    }
+
+    .handle {
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      background: #fff;
+      border: 2px solid var(--blue);
+      border-radius: 50%;
+    }
+    .handle.tl { top: -6px; left: -6px; }
+    .handle.tr { top: -6px; right: -6px; }
+    .handle.bl { bottom: -6px; left: -6px; }
+    .handle.br { bottom: -6px; right: -6px; }
+
+    .port {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      background: var(--lilac);
+      border: 1.5px solid #7c5cdb;
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.22);
+    }
+    .port.left { left: -8px; top: 50%; margin-top: -7px; }
+    .port.right { right: -8px; top: 40%; }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "Syne", sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .card-title .ico {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #a78bfa, #4262ff);
+      display: grid;
+      place-items: center;
+    }
+    .card-title .ico svg {
+      width: 12px;
+      height: 12px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.4;
+    }
+
+    .card-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9a9aa3;
+      margin-bottom: 8px;
+    }
+
+    .card h1 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(26px, 2.8vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .card > p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 11px 16px;
+      background: #111;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: transform 0.2s ease;
+    }
+    .cta:hover { transform: translateY(-1px); }
+    .cta svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .cta-ghost {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      padding: 10px 6px;
+    }
+    .cta-ghost:hover { color: var(--ink); }
+
+    .scroll-cue {
+      position: absolute;
+      left: 28px;
+      bottom: 22px;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.28);
+      animation: bounce 2.2s ease-in-out infinite;
+    }
+    .scroll-cue svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+
+    .section.panel {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    #approach.panel {
+      background:
+        radial-gradient(ellipse 80% 60% at 85% 40%, rgba(167, 139, 250, 0.18), transparent 55%),
+        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(66, 98, 255, 0.06), transparent 50%),
+        #f4f1fc;
+    }
+
+    .section-inner {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 28px;
+    }
+
+    .section {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+
+    .section-lead {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 540px;
+      margin: -16px 0 40px;
+      line-height: 1.6;
+    }
+
+    /* Domain: copy + picture */
+    .domain-layout {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 56px;
+      align-items: stretch;
+    }
+
+    .domain-copy {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .domain-copy .section-kicker {
+      margin-bottom: 10px;
+    }
+
+    .domain-copy h2 {
+      margin-bottom: 28px;
+    }
+
+    .domain-list {
+      display: grid;
+      gap: 0;
+      flex: 1;
+    }
+
+    .domain-item {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .domain-item:first-child {
+      padding-top: 0;
+    }
+    .domain-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .domain-item .num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .domain-item h3 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(18px, 2.2vw, 24px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .domain-item p {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 440px;
+      line-height: 1.55;
+    }
+
+    .domain-photo {
+      align-self: stretch;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #ececef;
+      min-height: 0;
+      height: 100%;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    }
+
+    .domain-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .domain-photo .photo-fallback {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(ellipse 70% 50% at 30% 20%, rgba(167,139,250,0.35), transparent 55%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(66,98,255,0.2), transparent 50%),
+        #e8e6f0;
+      color: rgba(0,0,0,0.35);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 24px;
+    }
+
+    /* Approach */
+    .approach-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .approach-block {
+      max-width: 640px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    .approach-viz {
+      position: relative;
+      width: 220px;
+      height: 180px;
+      flex-shrink: 0;
+    }
+
+    .approach-viz svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    /* Ambient noise particles */
+    .approach-viz .noise {
+      fill: #a78bfa;
+      opacity: 0;
+      animation: noise-drift 4.5s ease-in-out infinite;
+    }
+    .approach-viz .noise.n1 { animation-delay: 0s; }
+    .approach-viz .noise.n2 { animation-delay: 0.4s; }
+    .approach-viz .noise.n3 { animation-delay: 0.8s; }
+    .approach-viz .noise.n4 { animation-delay: 1.2s; }
+    .approach-viz .noise.n5 { animation-delay: 1.6s; }
+    .approach-viz .noise.n6 { animation-delay: 0.2s; }
+
+    @keyframes noise-drift {
+      0%, 100% { opacity: 0.15; transform: translate(0, 0); }
+      40% { opacity: 0.45; }
+      50% { opacity: 0.2; transform: translate(6px, -8px); }
+      75% { opacity: 0.35; transform: translate(-4px, 5px); }
+    }
+
+    .approach-viz .a-line {
+      fill: none;
+      stroke: url(#signalGrad);
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      filter: drop-shadow(0 0 3px rgba(167, 139, 250, 0.6));
+      animation: a-draw 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    .approach-viz .a-line.l1 { animation-delay: 0.35s; }
+    .approach-viz .a-line.l2 { animation-delay: 0.7s; }
+    .approach-viz .a-line.l3 { animation-delay: 1.05s; }
+
+    .approach-viz .a-dot {
+      fill: #111;
+      stroke: #c4b5fd;
+      stroke-width: 2;
+      opacity: 0;
+      transform-origin: center;
+      transform-box: fill-box;
+      animation: a-dot-in 0.45s cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
+      filter: drop-shadow(0 0 6px rgba(167, 139, 250, 0.5));
+    }
+    .approach-viz .a-dot.d1 { animation-delay: 0.1s; }
+    .approach-viz .a-dot.d2 { animation-delay: 0.45s; }
+    .approach-viz .a-dot.d3 { animation-delay: 0.8s; }
+
+    .approach-viz .a-core {
+      fill: #a78bfa;
+      opacity: 0;
+      transform-origin: center;
+      transform-box: fill-box;
+      animation: a-core-in 0.5s 1.55s ease forwards, a-breathe 2.8s 2.05s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.85));
+    }
+
+    .approach-viz .a-ring {
+      fill: none;
+      stroke: #a78bfa;
+      stroke-width: 1.5;
+      opacity: 0;
+      transform-origin: center;
+      transform-box: fill-box;
+      animation: a-ring 2.4s 1.85s ease-out infinite;
+    }
+
+    .approach-viz .a-spark {
+      offset-path: path("M110 36 C145 52, 168 95, 172 140 C150 158, 70 158, 48 140 C52 95, 75 52, 110 36");
+      offset-distance: 0%;
+      offset-rotate: 0deg;
+      opacity: 0;
+      animation: a-spark 2.4s 1.9s linear infinite;
+    }
+
+    @keyframes a-draw {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes a-dot-in {
+      from { opacity: 0; transform: scale(0.2); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes a-core-in {
+      from { opacity: 0; transform: scale(0); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes a-breathe {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.85; }
+    }
+
+    @keyframes a-ring {
+      0% { opacity: 0.6; transform: scale(0.6); }
+      100% { opacity: 0; transform: scale(2.2); }
+    }
+
+    @keyframes a-spark {
+      0% { offset-distance: 0%; opacity: 0; }
+      8% { opacity: 1; }
+      92% { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+
+    .work-list { border-top: 1px solid rgba(0,0,0,0.1); }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: baseline;
+      padding: 26px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      transition: padding-left 0.3s ease;
+    }
+    .work-item:hover { padding-left: 8px; }
+
+    .work-item h3 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(20px, 2.4vw, 26px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .work-item p { font-size: 15px; color: var(--muted); max-width: 520px; }
+    .work-meta { font-size: 13px; font-weight: 500; color: var(--muted); white-space: nowrap; }
+
+    .contact.panel {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .contact-panel {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 28px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact h2 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      max-width: 10ch;
+    }
+
+    .contact p { font-size: 16px; color: var(--muted); max-width: 360px; }
+
+    .contact-mail {
+      font-family: "Syne", sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--blue);
+      width: fit-content;
+      border-bottom: 1.5px solid currentColor;
+    }
+
+    .footer { margin-top: 64px; font-size: 12px; color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .flow {
+        flex-direction: column;
+        padding: 72px 16px 16px;
+        gap: 14px;
+      }
+      .graph { width: 100%; height: 40vh; }
+      .card {
+        width: 100%;
+        transform: none;
+        max-height: 42%;
+        overflow: auto;
+      }
+      @keyframes card-in {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .bloom { right: 50%; transform: translate(50%, -40%); width: 90vw; height: 90vw; }
+      .node { width: 72px; height: 36px; }
+      .node.approach { width: 80px; height: 40px; }
+      .node svg { width: 15px; height: 15px; }
+      .col-label { display: none; }
+    }
+
+    @media (max-width: 720px) {
+      html { scroll-snap-type: y proximity; }
+      .nav-links, .scroll-cue { display: none; }
+      .work-item { grid-template-columns: 1fr; gap: 8px; }
+      .domain-layout { grid-template-columns: 1fr; gap: 32px; }
+      .domain-photo { height: auto; aspect-ratio: 4 / 5; max-width: 360px; }
+      .approach-layout { grid-template-columns: 1fr; gap: 28px; }
+      .approach-viz { width: 200px; height: 160px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-snap-type: none; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="viewport">
+    <div class="dots" aria-hidden="true"></div>
+    <div class="bloom" aria-hidden="true"></div>
+
+    <nav class="nav">
+      <a class="nav-brand" href="#">Stefan</a>
+      <ul class="nav-links">
+        <li><a href="#domain">Domain</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="flow">
+      <!-- Domain (3) → Approach (1) → Selected work (3) → Output -->
+      <div class="graph">
+        <span class="col-label" style="left:5%; top:2%;">Domain</span>
+        <span class="col-label" style="left:36%; top:2%;">Approach</span>
+        <span class="col-label" style="left:66%; top:2%;">Selected work</span>
+
+        <svg class="wires" viewBox="0 0 1000 500" preserveAspectRatio="none">
+          <defs>
+            <marker id="arr" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
+              <path d="M0,0 L6,3.5 L0,7 Z" fill="#b9a6ff"/>
+            </marker>
+          </defs>
+
+          <!-- Stage 1: domains → approach -->
+          <path class="wire-soft w-s1" pathLength="1" d="M160 100 C260 100, 280 250, 360 250"/>
+          <path class="wire-soft w-s1" pathLength="1" d="M160 250 H360"/>
+          <path class="wire-soft w-s1" pathLength="1" d="M160 400 C260 400, 280 250, 360 250"/>
+          <path class="wire w-s1" pathLength="1" marker-end="url(#arr)" d="M160 100 C260 100, 280 250, 360 250"/>
+          <path class="wire w-s1" pathLength="1" marker-end="url(#arr)" d="M160 250 H360"/>
+          <path class="wire w-s1" pathLength="1" marker-end="url(#arr)" d="M160 400 C260 400, 280 250, 360 250"/>
+          <path class="wire-flow f1" d="M160 250 H360"/>
+
+          <!-- Stage 2: approach → selected work -->
+          <path class="wire-soft w-s2" pathLength="1" d="M460 250 C540 250, 560 100, 640 100"/>
+          <path class="wire-soft w-s2" pathLength="1" d="M460 250 H640"/>
+          <path class="wire-soft w-s2" pathLength="1" d="M460 250 C540 250, 560 400, 640 400"/>
+          <path class="wire w-s2" pathLength="1" marker-end="url(#arr)" d="M460 250 C540 250, 560 100, 640 100"/>
+          <path class="wire w-s2" pathLength="1" marker-end="url(#arr)" d="M460 250 H640"/>
+          <path class="wire w-s2" pathLength="1" marker-end="url(#arr)" d="M460 250 C540 250, 560 400, 640 400"/>
+          <path class="wire-flow f2" d="M460 250 H640"/>
+
+          <!-- Stage 3: selected work → output -->
+          <path class="wire-soft w-s3" pathLength="1" d="M740 100 C860 100, 940 250, 1000 250"/>
+          <path class="wire-soft w-s3" pathLength="1" d="M740 250 H1000"/>
+          <path class="wire-soft w-s3" pathLength="1" d="M740 400 C860 400, 940 250, 1000 250"/>
+          <path class="wire w-s3" pathLength="1" marker-end="url(#arr)" d="M740 100 C860 100, 940 250, 1000 250"/>
+          <path class="wire w-s3" pathLength="1" marker-end="url(#arr)" d="M740 250 H1000"/>
+          <path class="wire w-s3" pathLength="1" marker-end="url(#arr)" d="M740 400 C860 400, 940 250, 1000 250"/>
+          <path class="wire-flow f3" d="M740 250 H1000"/>
+        </svg>
+
+        <!-- Domains (3) -->
+        <a class="node n-domain" href="#domain" style="left:6%; top:15.6%;" title="Quant UXR, product analytics & growth" aria-label="Domain · Quant UXR">
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </a>
+        <a class="node n-domain" href="#domain" style="left:6%; top:45.6%;" title="Frameworks & horizontal durable work" aria-label="Domain · Frameworks">
+          <svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="M8 15v-4M12 15V8M16 15v-6"/></svg>
+        </a>
+        <a class="node n-domain" href="#domain" style="left:6%; top:75.6%;" title="AI domain (product-led)" aria-label="Domain · AI">
+          <svg viewBox="0 0 24 24"><rect x="6" y="8" width="12" height="10" rx="3"/><circle cx="9.5" cy="13" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="13" r="1.1" fill="currentColor" stroke="none"/><path d="M12 4v3"/></svg>
+        </a>
+
+        <!-- Approach (1) -->
+        <a class="node approach n-approach" href="#approach" style="left:36%; top:45.2%;" title="Approach" aria-label="Approach">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M16.3 7.7l2.1-2.1M5.6 18.4l2.1-2.1"/></svg>
+        </a>
+
+        <!-- Selected work (3) -->
+        <a class="node n-project" href="#p1" style="left:64%; top:15.6%;" title="Signal Atlas" aria-label="Selected work · Signal Atlas">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+        </a>
+        <a class="node n-project" href="#p2" style="left:64%; top:45.6%;" title="Adoption Zones" aria-label="Selected work · Adoption Zones">
+          <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.5"/><circle cx="16" cy="8" r="2.5"/><circle cx="12" cy="16" r="2.5"/><path d="M10 9.5 11 14M14 9.5l-1 4.5"/></svg>
+        </a>
+        <a class="node n-project" href="#p3" style="left:64%; top:75.6%;" title="Persona systems" aria-label="Selected work · Persona systems">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 19c1.8-3.2 4-4.5 7-4.5s5.2 1.3 7 4.5"/></svg>
+        </a>
+      </div>
+
+      <aside class="card" id="output">
+        <span class="handle tl"></span><span class="handle tr"></span>
+        <span class="handle bl"></span><span class="handle br"></span>
+        <span class="port left"></span><span class="port right"></span>
+
+        <div class="card-top">
+          <div class="card-title">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+            Stefan
+          </div>
+        </div>
+
+        <p class="card-kicker">Output</p>
+        <h1>Turn noise into signal</h1>
+        <p>A data void between quant UXR and product analytics, tapping into domains like adoption frameworks, growth, and AI tools.</p>
+
+        <div class="card-actions">
+          <a class="cta" href="#work">
+            View selected work
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="cta-ghost" href="#domain">About me</a>
+        </div>
+
+      </aside>
+    </div>
+
+    <a class="scroll-cue" href="#domain">
+      Scroll
+      <svg viewBox="0 0 24 24"><path d="M6 10l6 6 6-6"/></svg>
+    </a>
+  </section>
+
+  <section class="section panel" id="domain">
+    <div class="section-inner">
+      <div class="domain-layout">
+        <div class="domain-copy">
+          <p class="section-kicker">Domain</p>
+          <h2>Where I operate</h2>
+          <div class="domain-list">
+            <div class="domain-item">
+              <p class="num">01</p>
+              <h3>Quant UXR, product analytics &amp; growth</h3>
+              <p>Studies that convert high-volume, ambiguous data — surveys, telemetry, revenue — into the specific number a team used to make a real decision: a pricing call, a Q1 priority, a go/no-go on a roadmap bet.</p>
+            </div>
+            <div class="domain-item">
+              <p class="num">02</p>
+              <h3>Frameworks &amp; horizontal durable work</h3>
+              <p>Systems built once and reused for years — shared taxonomies, standardized metrics, and infrastructure that replaced one-off studies with something the whole org could measure against.</p>
+            </div>
+            <div class="domain-item">
+              <p class="num">03</p>
+              <h3>AI domain (product-led)</h3>
+              <p>Research that treated AI features as products to be adopted, not technology to be marveled at — starting from what job someone was trying to get done, and letting that decide what “success” meant.</p>
+            </div>
+          </div>
+        </div>
+        <div class="domain-photo">
+          <!-- Drop your portrait at portrait.jpg next to this file, or replace the src -->
+          <img src="portrait.jpg" alt="Stefan" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <div class="photo-fallback" style="display:none;" aria-hidden="true">Add portrait.jpg</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section panel" id="approach">
+    <div class="section-inner">
+      <p class="section-kicker">Approach</p>
+      <h2>How I connect the dots</h2>
+      <div class="approach-layout">
+        <div class="approach-block">
+          <p>More than any single project, my work is driven by how I tackle ambiguous spaces—stripping away the noise to find the core signal. I don't just research product teams; I think like a product person. That means taking shared ownership of business metrics, marketing strategy, and technical realities so stakeholders become active research partners. I move comfortably between working with engineers and aligning with VPs, always holding two priorities in balance: creating durable, long-term frameworks while staying ready to solve the urgent, time-sensitive problems that keep decisions moving.</p>
+        </div>
+        <div class="approach-viz" aria-hidden="true">
+          <svg viewBox="0 0 220 180">
+            <defs>
+              <linearGradient id="signalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#7c5cdb"/>
+                <stop offset="100%" stop-color="#4262ff"/>
+              </linearGradient>
+              <radialGradient id="sparkGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fff"/>
+                <stop offset="40%" stop-color="#c4b5fd"/>
+                <stop offset="100%" stop-color="rgba(167,139,250,0)"/>
+              </radialGradient>
+            </defs>
+
+            <!-- floating noise -->
+            <circle class="noise n1" cx="28" cy="40" r="2.5"/>
+            <circle class="noise n2" cx="190" cy="55" r="2"/>
+            <circle class="noise n3" cx="55" cy="160" r="2.2"/>
+            <circle class="noise n4" cx="200" cy="140" r="1.8"/>
+            <circle class="noise n5" cx="110" cy="20" r="2"/>
+            <circle class="noise n6" cx="175" cy="95" r="1.6"/>
+
+            <!-- equilateral triangle: soft outward arcs -->
+            <path class="a-line l1" pathLength="1" d="M110 36 C145 52, 168 95, 172 140"/>
+            <path class="a-line l2" pathLength="1" d="M172 140 C150 158, 70 158, 48 140"/>
+            <path class="a-line l3" pathLength="1" d="M48 140 C52 95, 75 52, 110 36"/>
+
+            <!-- three nodes -->
+            <circle class="a-dot d1" cx="110" cy="36" r="8"/>
+            <circle class="a-dot d2" cx="172" cy="140" r="8"/>
+            <circle class="a-dot d3" cx="48" cy="140" r="8"/>
+
+            <!-- core signal at centroid -->
+            <circle class="a-ring" cx="110" cy="105" r="14"/>
+            <circle class="a-core" cx="110" cy="105" r="5"/>
+
+            <!-- spark orbits the loop -->
+            <g class="a-spark">
+              <circle cx="0" cy="0" r="10" fill="url(#sparkGlow)"/>
+              <circle cx="0" cy="0" r="3.5" fill="#fff"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section panel" id="work">
+    <div class="section-inner">
+      <p class="section-kicker">Selected work</p>
+      <h2>Projects that feed the output</h2>
+      <div class="work-list">
+        <a class="work-item" id="p1" href="#"><div><h3>Signal Atlas</h3><p>Mapping noisy product events into a coherent adoption narrative.</p></div><span class="work-meta">Analytics</span></a>
+        <a class="work-item" id="p2" href="#"><div><h3>Adoption Zones</h3><p>Segmenting how teams use AI — from curious to compounding — with clear next actions.</p></div><span class="work-meta">Framework</span></a>
+        <a class="work-item" id="p3" href="#"><div><h3>Persona systems</h3><p>Firmographic and behavioral portraits that keep AI roadmaps grounded in real users.</p></div><span class="work-meta">Strategy</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact panel" id="contact">
+    <div class="contact-panel">
+      <h2>Let’s build the next one</h2>
+      <p>Open to collaborations on AI product surfaces, analytics narratives, and workflow tools.</p>
+      <a class="contact-mail" href="mailto:hello@stefan.work">hello@stefan.work</a>
+      <p class="footer">© 2026 Stefan · Portfolio study · v4</p>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const viz = document.querySelector(".approach-viz");
+      if (!viz || !("IntersectionObserver" in window)) return;
+      const anims = viz.querySelectorAll(".a-line, .a-dot, .a-core, .a-ring, .a-spark, .noise");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            anims.forEach((el) => {
+              el.style.animation = "none";
+              void el.offsetWidth;
+              el.style.animation = "";
+            });
+          });
+        },
+        { threshold: 0.4 }
+      );
+      io.observe(viz);
+    })();
+  </script>
+</body>
+</html>

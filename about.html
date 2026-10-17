@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Stefan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1a;
+      --muted: #5c5c5c;
+      --blue: #4262ff;
+      --lilac: #a78bfa;
+      --paper: #faf9fc;
+      --line: rgba(0, 0, 0, 0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background: #fff;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 70% 45% at 92% 0%, rgba(167, 139, 250, 0.16), transparent 55%),
+        radial-gradient(ellipse 40% 35% at 5% 40%, rgba(66, 98, 255, 0.05), transparent 50%),
+        var(--paper);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .nav-brand {
+      font-family: "Syne", sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 28px 100px;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .back:hover { color: var(--ink); }
+    .back svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .kicker {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 72px;
+    }
+
+    .photo {
+      border-radius: 18px;
+      overflow: hidden;
+      background: #ebe4f8;
+      aspect-ratio: 4 / 5;
+      box-shadow: 0 24px 50px rgba(167, 139, 250, 0.18);
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .photo-fallback {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(ellipse 70% 50% at 30% 20%, rgba(167, 139, 250, 0.35), transparent 55%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(66, 98, 255, 0.2), transparent 50%),
+        #e8e6f0;
+      color: rgba(0, 0, 0, 0.35);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-copy h1 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+
+    .hero-role {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--lilac);
+      margin-bottom: 14px;
+    }
+
+    .hero-copy .lead {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 46ch;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 16px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 13px 22px;
+      border-radius: 999px;
+    }
+    .btn:hover { background: #2a2a2a; }
+    .btn svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid rgba(0, 0, 0, 0.14);
+      padding: 12px 20px;
+      border-radius: 999px;
+    }
+    .btn-ghost:hover { border-color: var(--ink); }
+    .btn-ghost svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+    .link-soft {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--blue);
+      border-bottom: 1.5px solid currentColor;
+      padding-bottom: 1px;
+    }
+
+    .section { margin-bottom: 64px; }
+
+    .section h2 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(22px, 2.8vw, 28px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+
+    .timeline {
+      position: relative;
+      border-left: 1.5px solid var(--line);
+      padding-left: 24px;
+      display: grid;
+      gap: 28px;
+    }
+
+    .tl-item { position: relative; }
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: -29px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--lilac);
+      box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.2);
+    }
+
+    .tl-when {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .tl-item h3 {
+      font-family: "Syne", sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .tl-role {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .tl-item p {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 48ch;
+      line-height: 1.5;
+    }
+
+    .skill-groups { display: grid; gap: 28px; }
+
+    .skill-group h3 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .lang-list,
+    .talk-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .lang-row,
+    .talk-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .lang-row:last-child,
+    .talk-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .lang-row strong,
+    .talk-row strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .lang-row span,
+    .talk-row span {
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .highlight {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 18px;
+    }
+
+    .highlight h3 {
+      font-family: "Syne", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .highlight p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .contact-panel {
+      background: #111;
+      color: #fff;
+      border-radius: 22px;
+      padding: 40px 36px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-panel h2 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      margin: 0;
+      max-width: 12ch;
+    }
+
+    .contact-panel p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 42ch;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 16px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .contact-mail {
+      font-family: "Syne", sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #c4b5fd;
+      width: fit-content;
+      border-bottom: 1.5px solid currentColor;
+    }
+
+    .btn-on-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 13px 22px;
+      border-radius: 999px;
+    }
+    .btn-on-dark svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .footer {
+      margin-top: 48px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .two-col,
+      .highlights {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .photo { max-width: 360px; }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+    }
+  
+    /* Horizontal work rail */
+    .work-scroll {
+      overflow-x: auto;
+      margin: 8px -8px 0;
+      padding: 8px 8px 4px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+
+    .work-rail {
+      --rail-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(148px, 1fr));
+      gap: 0 12px;
+      position: relative;
+      min-width: 1040px;
+      padding-bottom: 4px;
+    }
+
+    .work-rail::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      top: var(--rail-top);
+      height: 0;
+      border: none;
+      border-top: 2px dotted rgba(66, 98, 255, 0.55);
+      background: none;
+      z-index: 0;
+    }
+
+    .work-stop {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 0;
+      padding: 0 4px 8px;
+      border-radius: 12px;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .work-stop:hover {
+      transform: translateY(-3px);
+    }
+
+    .work-stop .tl-when {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+      line-height: 1;
+      min-height: 1em;
+    }
+
+    .work-stop .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2.5px solid var(--lilac);
+      box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.18);
+      margin-bottom: 18px;
+      flex-shrink: 0;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .work-stop:hover .dot {
+      transform: scale(1.15);
+      box-shadow: 0 0 0 6px rgba(167, 139, 250, 0.22);
+    }
+
+    .work-stop.is-now .dot {
+      background: var(--blue);
+      border-color: var(--blue);
+      box-shadow: 0 0 0 5px rgba(66, 98, 255, 0.18);
+    }
+
+    .work-stop.is-now .tl-when {
+      color: var(--blue);
+    }
+
+    .work-stop .tl-now {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--blue);
+      padding: 3px 7px;
+      border-radius: 999px;
+      margin-left: 6px;
+      vertical-align: 1px;
+    }
+
+    .work-stop h3 {
+      font-family: "Syne", sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 3px;
+      line-height: 1.15;
+    }
+
+    .work-stop .tl-city {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(26, 26, 26, 0.42);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .work-stop .tl-role {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      line-height: 1.4;
+      max-width: 15ch;
+    }
+
+    .work-stop.is-now h3 { color: var(--ink); }
+    .work-stop.is-now .tl-role { color: var(--ink); font-weight: 600; }
+
+    @media (max-width: 860px) {
+      .work-scroll .work-rail { min-width: 1100px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .work-stop,
+      .work-stop .dot { transition: none; }
+      .work-stop:hover { transform: none; }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a class="nav-brand" href="index.html">Stefan</a>
+      <ul class="nav-links">
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About me</a></li>
+      </ul>
+    </nav>
+
+    <div class="wrap">
+      <a class="back" href="index.html">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        Back
+      </a>
+
+      <section class="hero">
+        <div class="photo">
+          <img src="portrait.jpg" alt="Stefan Manojlović" />
+        </div>
+        <div class="hero-copy">
+          <p class="kicker">About me</p>
+          <h1>Stefan Manojlović</h1>
+          <p class="hero-role">Staff UX Researcher</p>
+          <p class="lead">Mixed-methods research for AI, monetization and growth. 10 years at Miro, Personio, Spotify and TomTom — turning behavioral data, surveys and qualitative work into one recommendation for C-level and senior leaders.</p>
+          <div class="hero-actions">
+            <a class="btn" href="assets/Stefan_Manojlovic_CV.pdf" download="Stefan_Manojlovic_CV.pdf">
+              Download CV
+              <svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 19h14"/></svg>
+            </a>
+            <a class="btn-ghost" href="projects.html">View projects</a>
+            <a class="link-soft" href="#contact">Get in touch</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="kicker">Experience</p>
+        <h2>Work</h2>
+        <div class="work-scroll">
+          <div class="work-rail" role="list">
+            <article class="work-stop" role="listitem">
+              <p class="tl-when">2016</p>
+              <span class="dot" aria-hidden="true"></span>
+              <h3>Bellabeat</h3>
+              <p class="tl-city">San Francisco</p>
+              <p class="tl-role">UX Researcher</p>
+            </article>
+            <article class="work-stop" role="listitem">
+              <p class="tl-when">2017</p>
+              <span class="dot" aria-hidden="true"></span>
+              <h3>Philips</h3>
+              <p class="tl-city">Groningen</p>
+              <p class="tl-role">UX Research Manager</p>
+            </article>
+            <article class="work-stop" role="listitem">
+              <p class="tl-when">2019</p>
+              <span class="dot" aria-hidden="true"></span>
+              <h3>TomTom</h3>
+              <p class="tl-city">Amsterdam</p>
+              <p class="tl-role">Voice UX Researcher</p>
+            </article>
+            <article class="work-stop" role="listitem">
+              <p class="tl-when">2021</p>
+              <span class="dot" aria-hidden="true"></span>
+              <h3>Spotify</h3>
+              <p class="tl-city">Amsterdam</p>
+              <p class="tl-role">Sr. UX Researcher</p>
+            </article>
+            <article class="work-stop" role="listitem">
+              <p class="tl-when">2024</p>
+              <span class="dot" aria-hidden="true"></span>
+              <h3>Personio</h3>
+              <p class="tl-city">Barcelona</p>
+              <p class="tl-role">Staff UX Researcher</p>
+            </article>
+            <article class="work-stop is-now" role="listitem">
+              <p class="tl-when">2025 <span class="tl-now">Now</span></p>
+              <span class="dot" aria-hidden="true"></span>
+              <h3>Miro</h3>
+              <p class="tl-city">Barcelona</p>
+              <p class="tl-role">Staff Quantitative UX Researcher, AI<br/>UX Research Lead, Canvas AI</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section two-col">
+        <div>
+          <p class="kicker">Formation</p>
+          <h2>Education</h2>
+          <div class="talk-list">
+            <div class="talk-row"><strong>PDEng User-System Interaction</strong><span>TU/e · Eindhoven</span></div>
+            <div class="talk-row"><strong>MSc Information Technology</strong><span>University of Southern Denmark</span></div>
+            <div class="talk-row"><strong>BSc Natural Sciences and Engineering</strong><span>University of Ljubljana</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="kicker">Talks</p>
+          <h2>Selected speaking</h2>
+          <div class="talk-list">
+            <div class="talk-row"><strong>Quant Guild: UXR &amp; Data &amp; Growth</strong><span>.debug · 2025</span></div>
+            <div class="talk-row"><strong>UX of Millions</strong><span>Sofascore · 2024</span></div>
+            <div class="talk-row"><strong>How can Data Scientists be your bestie</strong><span>Amsterdam UX · 2022</span></div>
+            <div class="talk-row"><strong>AI Implications in UX Research</strong><span>Visage · 2021</span></div>
+            <div class="talk-row"><strong>Crowdsourcing</strong><span>CHI · 2019</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <h2>Let’s build the next one</h2>
+        <p>Open to collaborations on AI product surfaces, analytics narratives, and research systems that turn noise into signal.</p>
+        <a class="contact-mail" href="mailto:hello@stefan.work">hello@stefan.work</a>
+      </section>
+
+      <p class="footer">© 2026 Stefan Manojlović · Portfolio study</p>
+    </div>
+  </div>
+</body>
+</html>

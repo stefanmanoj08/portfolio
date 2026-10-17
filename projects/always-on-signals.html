@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Always-on Signals — Stefan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="case.css" />
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a class="nav-brand" href="../index.html">Stefan</a>
+      <ul class="nav-links">
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../about.html">About me</a></li>
+      </ul>
+    </nav>
+
+    <article class="wrap">
+      <a class="back" href="../projects.html">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        All projects
+      </a>
+
+      <div class="meta-row">
+        <span class="num">02</span>
+        <span class="company">Miro · 2025</span>
+        <span class="role">Lead Researcher · Experience Measurement</span>
+      </div>
+
+      <h1>Always-on Signals</h1>
+      <p class="headline">Hundreds of thousands of CSAT &amp; PMF responses</p>
+      <p class="summary">A standing CSAT × PMF measurement system that replaced company dashboards and absorbed hundreds of thousands of responses across product lines.</p>
+
+      <div class="cover-visual">
+        <figure class="figure wide">
+          <img src="images/always-on-signals-cover.svg" alt="Always-on Signals cover" />
+        </figure>
+      </div>
+
+
+      <section class="section">
+        <h2>Situation</h2>
+          <p>Miro&#x27;s key AI features (such as Sidekicks and Flows) were iterating rapidly, making traditional research sprints and static retrospectives obsolete. Experience quality data was fragmented across isolated in-product surveys, Slack channels, reports and decks. Leadership needed a continuous, real-time pulse on customer sentiment, so I decided to create a program to track satisfaction (CSAT) and product-market fit (PMF) directly linked to commercial impact and feature usage.</p>
+      </section>
+
+      <section class="section">
+        <h2>Task</h2>
+          <p>Build and operationalize Always-on Signals — a standing, automated health measurement system. The primary goal was to triangulate live survey, usage, and revenue data from Snowflake into decision-ready views, replacing ad-hoc pulls with a system product teams would actively use.</p>
+      </section>
+
+      <section class="section">
+        <h2>Approach</h2>
+          <p>Data was triangulated through automated pipelines from Snowflake, combining four core signals: sentiment (CSAT, PMF, overall NPS), value (ARR-weighted satisfaction by plan tier), engagement (active user tiers), and adoption/retention metrics. A joint-attitude framework mapped overlapping CSAT and PMF respondents into four distinct profile quadrants — AI Champions, Happy but Indifferent, Frustrated but Hooked, and Disappointed and Detached — to separate dependence from happiness.</p>
+          <p>Multiple linear regression was applied to coded open-text comments, isolating specific drivers and assigning a “CSAT uplift if solved” value to rank product fixes by business impact. The research itself was productized: continuous HTML dashboards and a dedicated web page, alongside human-curated weekly and bi-weekly updates to Slack — treating research as a living product with its own release cadence.</p>
+      <div class="inline-visual">
+        <figure class="figure wide">
+          <img src="images/always-on-signals-visual-1.svg" alt="Always-on Signals visual" />
+        </figure>
+      </div>
+
+      </section>
+
+      <section class="section">
+        <h2>Result</h2>
+          <p>The program earned high-scale operational adoption: it replaced traditional company dashboards and scaled to cover additional product lines, absorbing hundreds of thousands of CSAT, PMF, and relationship NPS responses across multiple product portfolios. It surfaced a critical strategic discovery — significant CSAT drops in specific key AI feature areas even while overall company sentiment looked stable — exposing enterprise revenue risk tied to low-satisfaction accounts. It also created a data-quality feedback loop, surfacing underlying instrumentation issues (like tag bleed between products) that fed directly into engineering fixes.</p>
+      <div class="inline-visual">
+        <figure class="figure wide">
+          <img src="images/always-on-signals-visual-2.svg" alt="Always-on Signals visual" />
+        </figure>
+      </div>
+
+      </section>
+
+      <section class="section">
+        <h2>Methodology</h2>
+          <p>Always-on Signals demonstrates construct definition in the wild, combining attitudinal metrics (CSAT/PMF/NPS) with behavioral telemetry (board creation, sharing, seven-day retention). Pairing linear regression with user-segment cuts (tenure, plan, role) extracts actionable statistical impact while preserving observational rigor — turning mixed-methods research into a core operational deliverable.</p>
+      </section>
+
+      <p class="skills"><strong>Skills demonstrated:</strong> Regression &amp; effect sizes, Qualitative synthesis (diary studies, interviews), Research-ops &amp; infrastructure, Stakeholder communication</p>
+
+      <nav class="pager">
+        <a href="ai-adoption-zones.html">← AI Adoption Zones</a>
+        <a href="new-audiences.html">New Audiences →</a>
+      </nav>
+
+      <p class="footer">© 2026 Stefan · Portfolio study</p>
+    </article>
+  </div>
+</body>
+</html>
