@@ -219,6 +219,19 @@
       padding-bottom: 1px;
     }
 
+    .hero-actions .contact-icons {
+      margin-top: 0;
+    }
+    .hero-actions .contact-icon {
+      color: var(--blue);
+      background: rgba(66, 98, 255, 0.08);
+      border-color: rgba(66, 98, 255, 0.18);
+    }
+    .hero-actions .contact-icon:hover {
+      background: var(--blue);
+      color: #fff;
+    }
+
     .section { margin-bottom: 64px; }
 
     .section h2 {
@@ -401,13 +414,34 @@
       margin-top: 8px;
     }
 
-    .contact-mail {
-      font-family: "Syne", sans-serif;
-      font-size: 18px;
-      font-weight: 700;
+    .contact-icons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .contact-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
       color: #c4b5fd;
-      width: fit-content;
-      border-bottom: 1.5px solid currentColor;
+      background: rgba(196, 181, 253, 0.12);
+      border: 1px solid rgba(196, 181, 253, 0.28);
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .contact-icon:hover {
+      background: #fff;
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+    .contact-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
     }
 
     .btn-on-dark {
@@ -623,7 +657,14 @@
               <svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 19h14"/></svg>
             </a>
             <a class="btn-ghost" href="projects.html">View projects</a>
-            <a class="link-soft" href="#contact">Get in touch</a>
+            <div class="contact-icons">
+              <a class="contact-icon" href="https://www.linkedin.com/in/stefanmanojlovic/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z"/></svg>
+              </a>
+              <a class="contact-icon" href="mailto:stefan.manojlovic@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -705,11 +746,19 @@
       <section class="contact" id="contact">
         <h2>Let’s build the next one</h2>
         <p>Open to collaborations on AI product surfaces, analytics narratives, and research systems that turn noise into signal.</p>
-        <a class="contact-mail" href="mailto:hello@stefan.work">hello@stefan.work</a>
+        <div class="contact-icons">
+          <a class="contact-icon" href="https://www.linkedin.com/in/stefanmanojlovic/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z"/></svg>
+          </a>
+          <a class="contact-icon" href="mailto:stefan.manojlovic@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
+          </a>
+        </div>
       </section>
 
       <p class="footer">© 2026 Stefan Manojlović · Portfolio study</p>
     </div>
   </div>
+  <script src="assets/project-lock.js"></script>
 </body>
 </html>
